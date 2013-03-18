@@ -1,0 +1,22 @@
+{
+    "name": "smile/ez-sqlprofiler-bundle",
+    "description": "SQL queries infos for EZPublish 5.x",
+    "license": ["MIT"],
+    "authors": [
+        {
+            "name": "Cyril Quintin",
+            "email": "cyril.quintin@gmail.com"
+        },
+        {
+            "name": "Smile SA",
+            "homepage": "http://www.smile.fr/"
+        }
+    ],
+    "support": {
+        "email": "guillaume.maissa@smile.fr",
+        "email": "cyril.quintin@gmail.com"
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
