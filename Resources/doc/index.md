@@ -31,10 +31,10 @@ Add the bundle in your composer.json:
 Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update smile/ez-slprofiler-bundle
+$ php composer.phar update smile/ez-sqlprofiler-bundle
 ```
 
-Composer will install the bundle to your project's `vendor/smile/ez-slprofiler-bundle` directory.
+Composer will install the bundle to your project's `vendor/smile/ez-sqlprofiler-bundle` directory.
 
 ### Step 1-B : Download SmileEzSqlProfilerBundle using your fingers
 
