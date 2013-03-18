@@ -8,6 +8,9 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Alias;
 
+/**
+ * Override both the "DbHandlerFactory" and the "DbHandler"
+ */
 class OverrideEzDbHandlerPass implements CompilerPassInterface
 {
     const EZP_DBHANDLER_ID      = 'ezpublish.api.storage_engine.legacy.dbhandler';

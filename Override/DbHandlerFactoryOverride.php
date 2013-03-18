@@ -3,15 +3,14 @@
 
 
 namespace Smile\EzSqlProfilerBundle\Override;
-
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use eZ\Bundle\EzPublishCoreBundle\ApiLoader\LegacyDbHandlerFactory;
 
 /**
  * Force the class name to be DbHandlerOverride instead of \ezcDbHandler
  *
  * @author cyril.quintin@gmail.com
  */
-class DbHandlerFactoryOverride extends \eZ\Bundle\EzPublishCoreBundle\ApiLoader\LegacyDbHandlerFactory
+class DbHandlerFactoryOverride extends LegacyDbHandlerFactory
 {
     /**
      * Builds the DB handler used by the legacy storage engine.

@@ -1,16 +1,14 @@
 <?php
 
 namespace Smile\EzSqlProfilerBundle\DataCollector;
+
 use Symfony\Component\DependencyInjection\Container;
-
 use eZ\Publish\Core\Persistence\Legacy\EzcDbHandler;
-
-use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
-class DbHandlerDataCollector extends \Symfony\Component\HttpKernel\DataCollector\DataCollector
+class DbHandlerDataCollector extends DataCollector
 {
     protected $container;
 

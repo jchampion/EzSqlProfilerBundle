@@ -4,6 +4,8 @@ namespace Smile\EzSqlProfilerBundle\DataCollector;
 
 /**
  * Represent a Query that has been performed.
+ *
+ * @author cyril.quintin@gmail.com
  */
 class Query
 {

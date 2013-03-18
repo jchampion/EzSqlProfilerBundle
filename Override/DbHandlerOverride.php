@@ -37,7 +37,7 @@ class DbHandlerOverride extends EzcDbHandler
             $pq      = new Query( $q );
             $newTime = microtime( true );
 
-            if ( $diffTime > 0.00000 )
+            if ( $diffTime > 0.0 )
             {
                 $pq->setTime( $newTime - $diffTime );
             }
