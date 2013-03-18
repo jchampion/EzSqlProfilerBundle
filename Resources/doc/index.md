@@ -22,7 +22,7 @@ Add the bundle in your composer.json:
 
 ```js
 {
-    "require": {
+    "require-dev": {
         "smile/ez-sqlprofiler-bundle": "*"
     }
 }
@@ -31,7 +31,7 @@ Add the bundle in your composer.json:
 Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update smile/ez-sqlprofiler-bundle
+$ php composer.phar update smile/ez-sqlprofiler-bundle --dev
 ```
 
 Composer will install the bundle to your project's `vendor/smile/ez-sqlprofiler-bundle` directory.
