@@ -25,7 +25,7 @@ class Query
     {
         return $this->time;
     }
-    
+
     public function setTime($time)
     {
         $this->time = $time;
@@ -40,11 +40,12 @@ class Query
      */
     public function __sleep()
     {
-        if (null!==$this->ezcQuery) {
-            $this->sql = (string) $this->ezcQuery;
+        if ( null !== $this->ezcQuery )
+        {
+            $this->sql = (string)$this->ezcQuery;
             $this->ezcQuery = null;
         }
-        
-        return array('sql', 'time');
+
+        return array( 'sql', 'time' );
     }
 }

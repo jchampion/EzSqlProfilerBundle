@@ -14,10 +14,11 @@ class OverrideEzDbHandlerPass implements CompilerPassInterface
     const EZP_DBHFACTORY_ID     = 'ezpublish.api.storage_engine.legacy.dbhandler.factory';
     const SMILE_DECORATOR_CLASS = 'Smile\EzSqlProfilerBundle\Override\DbHandlerOverride';
     const SMILE_FACTORY_CLASS   = 'Smile\EzSqlProfilerBundle\Override\DbHandlerFactoryOverride';
-    
+
     public function process(ContainerBuilder $container)
     {
-        if ( !$container->hasDefinition( self::EZP_DBHANDLER_ID ) ) {
+        if ( !$container->hasDefinition( self::EZP_DBHANDLER_ID ) )
+        {
             return;
         }
 

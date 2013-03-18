@@ -1,22 +1,17 @@
 <?php
 
 namespace Smile\EzSqlProfilerBundle\Override;
-
-
 use eZ\Publish\Core\Persistence\Legacy\EzcDbHandler;
 use Smile\EzSqlProfilerBundle\DataCollector\Query;
-
-use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 /**
  * The execution time infos is a dirty approximation :
- * 
+ *
  * - Time from now to the previous query.
- * 
+ *
  * this can be cleaner with more override and PDO decorator (that compute ::exec and ::query time
- * 
+ *
  * @author cyril.quintin@gmail.com
  */
 class DbHandlerOverride extends EzcDbHandler
@@ -27,7 +22,7 @@ class DbHandlerOverride extends EzcDbHandler
      */
     public function getQueryCount()
     {
-        return count($this->queries);
+        return count( $this->queries );
     }
     /**
      * {@inheritdoc} Hold a reference to returned query objects
@@ -36,13 +31,15 @@ class DbHandlerOverride extends EzcDbHandler
     {
         static $diffTime = 0;
 
-        if ( in_array( $method, array( 'createSelectQuery', 'createFindQuery','createUpdateQuery' ) ) ) {
+        if ( in_array( $method, array( 'createSelectQuery', 'createFindQuery', 'createUpdateQuery' ) ) )
+        {
             $q       = call_user_func_array( array( $this->ezcDbHandler, $method ), $parameters );
-            $pq      = new Query($q);
-            $newTime = microtime(true);
+            $pq      = new Query( $q );
+            $newTime = microtime( true );
 
-            if ($diffTime > 0.00000) {
-                $pq->setTime($newTime-$diffTime);
+            if ( $diffTime > 0.00000 )
+            {
+                $pq->setTime( $newTime - $diffTime );
             }
 
             $this->queries[] = $pq;
@@ -77,23 +74,23 @@ class DbHandlerOverride extends EzcDbHandler
             if ( $databaseType === 'mysql' && $dbParams['charset'] === 'utf8' )
             {
                 $dbParams['driver-opts'] += array(
-                                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
                 );
             }
         }
-        
+
         $connection = \ezcDbFactory::create( $dbParams );
-    
+
         switch ( $databaseType )
         {
             case 'pgsql':
                 $dbHandler = new Pgsql( $connection );
                 break;
-    
+
             case 'sqlite':
                 $dbHandler = new Sqlite( $connection );
                 break;
-    
+
             default:
                 $dbHandler = new self( $connection );
         }

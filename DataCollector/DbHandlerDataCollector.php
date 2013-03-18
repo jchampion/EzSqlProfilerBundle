@@ -1,8 +1,6 @@
 <?php
 
 namespace Smile\EzSqlProfilerBundle\DataCollector;
-
-
 use Symfony\Component\DependencyInjection\Container;
 
 use eZ\Publish\Core\Persistence\Legacy\EzcDbHandler;
@@ -28,11 +26,10 @@ class DbHandlerDataCollector extends \Symfony\Component\HttpKernel\DataCollector
      * {@inheritdoc}
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
-    { 
-        $dbh = $this->container->get('ezpublish.api.storage_engine.legacy.dbhandler');
+    {
+        $dbh = $this->container->get( 'ezpublish.api.storage_engine.legacy.dbhandler' );
         $qlist = $dbh->getQueries();
-        
-        
+
         $this->data = array(
             'querycount' => $dbh->getQueryCount(),
             'queries'    => $dbh->getQueries()
@@ -41,26 +38,28 @@ class DbHandlerDataCollector extends \Symfony\Component\HttpKernel\DataCollector
 
     public function getQueryCount()
     {
-        return array_key_exists('querycount', $this->data) ? $this->data['querycount'] : 0;
+        return array_key_exists( 'querycount', $this->data ) ? $this->data['querycount'] : 0;
     }
 
     public function getTime()
     {
-        if (!array_key_exists('queries', $this->data)) {
+        if ( !array_key_exists( 'queries', $this->data ) )
+        {
             return 0;
         }
         $time = 0;
-        
-        foreach ($this->data['queries'] as $q) {
-            $time += $q->getTime();            
+
+        foreach ( $this->data['queries'] as $q )
+        {
+            $time += $q->getTime();
         }
-        
+
         return $time;
     }
 
     public function getQueries()
     {
-        return array_key_exists('queries', $this->data) ? $this->data['queries'] : array();
+        return array_key_exists( 'queries', $this->data ) ? $this->data['queries'] : array();
     }
 
     public function getName()
